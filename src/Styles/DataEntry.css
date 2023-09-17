@@ -1,0 +1,91 @@
+
+.dataEntrySection{
+    font-family: 'Montserrat', sans-serif;
+}
+.data-entry-main-heading{
+color: #4b4b4b;
+font-weight: 600;
+margin:  30px 10px;
+
+}
+
+.data-entry-sub-heading{
+    color: #4b4b4b;
+    margin:  10px 10px;
+    font-weight: 400;
+
+}
+.form-con{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.table-heading th{
+    width: max-content;
+    margin: 5px 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border: solid gray 2px;
+    text-align: center;
+
+}
+.table-body-row td{
+    padding: 10px;
+    width: max-content;
+    border: solid gray 2px;
+    text-align: center;
+
+}
+.dataEntryForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px;
+    padding: 5px;
+    width: 100%;
+}
+.dataEntrySection{
+    margin: 10px 30px;
+    padding: 20px;
+    
+}
+.dataEntry-form-header{
+    display: flex;
+
+}
+.header-form-item{
+    padding: 15px;
+    font-weight: bold;
+    width: 250px;
+    background-color: rgb(188, 196, 202);
+    border: solid black;
+}
+.dataEntry-form-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.input-form-item{
+    padding: 15px;
+    font-weight: bold;
+    width: 350px;
+}
+.addMoreBtn{
+    margin:30px 0;
+}
+.submitBtn{
+    position: relative;
+    bottom: 10px;
+}
+.btn{
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #f75700, #ff8800);
+    color: #f8f9fa
+}
+@media screen and (max-width:768px){
+    .dataEntrySection{
+        display: none;
+    }
+}

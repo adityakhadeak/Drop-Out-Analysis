@@ -1,0 +1,128 @@
+
+.header-main-con{
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.header-con{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f9fa;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: capitalize;}
+.header-right{
+    padding: 15px;
+
+}
+.header-left{
+    padding: 15px;
+
+}
+
+.header-logo-img{
+width: 300px;
+}
+.header-btns{
+    display: flex;
+    flex-direction: row;
+}
+.header-btns a{
+    text-decoration: none;
+    margin: 0 20px;
+    width: max-content;
+    color: #4b4b4b;
+    padding: 5px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 20px;
+    border: solid #f75700 2px;
+    cursor: pointer;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.01) -38px 33px 20px, rgba(0, 0, 0, 0.05) -21px 19px 17px, rgba(0, 0, 0, 0.09) -10px 8px 13px, rgba(0, 0, 0, 0.1) -2px 2px 7px, rgba(0, 0, 0, 0.1) 0px 0px 0px
+}
+.header-btns a:hover{
+    background-color: #f75700;
+}
+
+.nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    background-color: white;
+    transition: box-shadow 0.2s ease-in;
+}
+
+.nav-logo-con{
+   flex-basis: 25%; 
+   width: 100px;
+}
+.nav-logo-con img{
+    width: 60px;
+ }
+.nav-links{
+    margin-left: 20px;
+}
+.nav-link-list{
+    display: flex;
+    margin: 0;
+    list-style: none;
+    
+}
+
+.nav-link-list li{
+        margin: 2px 10px ;
+        padding: 5px 10px;
+        width: max-content;
+        cursor: pointer;
+}
+.nav-link-list li:hover{
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    transition: all 0.3s;
+
+}
+.nav-link-list li a{
+    text-decoration: none;
+    color: #4b4b4b;
+}
+
+.nav-logo-img{
+    width: 50px;
+    display: none;
+}
+.active{
+    border-bottom: solid  #f75700 2px ;
+}
+
+/* MOBILE VIEW */
+
+.mobile-nav-left img{
+    width: 60px;
+}
+.mobile-nav{
+    display: none;
+}
+.menu{
+    font-size: 30px;
+}
+@media screen and (max-width:768px){
+    .desk-top-nav{
+        display: none;
+    }
+    .mobile-nav{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+    }
+}
