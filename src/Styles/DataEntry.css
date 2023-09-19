@@ -2,19 +2,7 @@
 .dataEntrySection{
     font-family: 'Montserrat', sans-serif;
 }
-.data-entry-main-heading{
-color: #4b4b4b;
-font-weight: 600;
-margin:  30px 10px;
 
-}
-
-.data-entry-sub-heading{
-    color: #4b4b4b;
-    margin:  10px 10px;
-    font-weight: 400;
-
-}
 .form-con{
     display: flex;
     justify-content: center;
@@ -78,12 +66,7 @@ margin:  30px 10px;
     position: relative;
     bottom: 10px;
 }
-.btn{
-    padding: 5px 10px;
-    border-radius: 10px;
-    background: linear-gradient(to right, #f75700, #ff8800);
-    color: #f8f9fa
-}
+
 @media screen and (max-width:768px){
     .dataEntrySection{
         display: none;

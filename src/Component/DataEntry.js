@@ -95,9 +95,9 @@ const DataEntry = () => {
   return (
     <div className="dataEntrySection">
       <div className='data-entry-heading'>
-        <h1 className="data-entry-main-heading">Welcome Pillai College Of Engineering</h1>
+        <h1 className="heading">Welcome Pillai College Of Engineering</h1>
 
-        <h4 className="data-entry-sub-heading">Add Drop Out data here</h4>
+        <h4 className="sub-heading">Add Drop Out data here</h4>
       </div>
       <div className='form-con'>
         <form className="dataEntryForm" onSubmit={handleSubmit}>
@@ -192,9 +192,9 @@ const DataEntry = () => {
             </tbody>
           </table>
           <div className="addMoreBtn">
-            <button onClick={handleAddData} className='btn'> Add <AiOutlinePlus/> </button>
+            <button onClick={handleAddData} className='btn flex items-center'> Add <AiOutlinePlus className='mx-[1px]'/> </button>
           </div>
-          <div className="submitBtn">
+          <div className="submitBtn text-center">
             <button  className='btn' onClick={handleSubmit}>
               Submit
             </button>

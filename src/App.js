@@ -8,11 +8,14 @@ import AboutUs from './Component/AboutUs';
 import ContactUs from './Component/ContactUs';
 import Qna from './Component/Qna';
 import SchoolLogin from './Component/SchoolLogin';
+import SchoolRegister from './Component/SchoolRegister';
+import StepContext from './Component/MultiStepForm/StepContext';
 
 
 function App() {
   return (
     <Router>
+      <StepContext>
       <Header/>
       <Routes>
           <Route element={<Home/>} path='/' />
@@ -22,8 +25,10 @@ function App() {
           <Route element={<ContactUs/>} path='/contactus' />
           <Route element={<Qna/>} path='/qna' />
           <Route element={<SchoolLogin/>} path='/schoollogin' />
+          <Route element={<SchoolRegister/>} path='/schoolregister' />
 
         </Routes>
+        </StepContext>
     </Router>
   );
 }
