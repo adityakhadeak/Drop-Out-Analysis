@@ -10,13 +10,16 @@ import Qna from './Component/Qna';
 import SchoolLogin from './Component/SchoolLogin';
 import SchoolRegister from './Component/SchoolRegister';
 import StepContext from './Component/MultiStepForm/StepContext';
-
+import AllAlertsContext from './Component/Alerts/AllAlertContext';
+import AllAlerts from './Component/Alerts/AllAlerts';
 
 function App() {
   return (
     <Router>
+      <AllAlertsContext>
       <StepContext>
       <Header/>
+      <AllAlerts/>
       <Routes>
           <Route element={<Home/>} path='/' />
           <Route element={<GraphicRes/>} path='/graphicres' />
@@ -29,6 +32,7 @@ function App() {
 
         </Routes>
         </StepContext>
+        </AllAlertsContext>
     </Router>
   );
 }

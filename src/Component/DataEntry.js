@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { TextField, IconButton } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { AiOutlinePlus} from "react-icons/ai";
 import MenuItem from '@mui/material/MenuItem';
-
-
 import '../Styles/DataEntry.css';
-
+import alertContext from '../Context/alertContext';
 const DataEntry = () => {
+  const {showAlert}=useContext(alertContext)
   const textFieldStyle = {
     width: '150px',
   };
@@ -83,7 +82,7 @@ const DataEntry = () => {
   
     if (isEmptyField) {
       // Handle empty fields (e.g., display an error message)
-      alert("Please fill in all required fields.");
+      showAlert("warning","Please fill all the fields")
     } else {
       // If no empty fields, proceed with form submission
       console.log('InputFields', inputFields);
