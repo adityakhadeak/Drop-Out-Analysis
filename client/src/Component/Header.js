@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import logo from '../images/gujlogo.png';
 import gujEdu from '../images/GujEdulogo.png';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi';
-
+import alertContext from '../Context/alertContext';
 import '../Styles/Header.css';
 
 const Header = () => {
+    const location=useLocation()
+    const navigate=useNavigate()
+    const{showAlert}=useContext(alertContext)
     const [shouldShrink, setShouldShrink] = useState(false);
     const [menu, setMenu] = useState(false)
 
@@ -18,6 +21,14 @@ const Header = () => {
         else
         {
             setMenu(true)
+        }
+    }
+
+    const handleAdmin=()=>{
+        if(location.pathname==='/admindashboard')
+        {
+            navigate('/adminlogin')
+            showAlert('success','Logged Out Succesfully')
         }
     }
     useEffect(() => {
@@ -53,7 +64,7 @@ const Header = () => {
                     </div>
                     <div className="header-right">
                         <div className="header-btns">
-                            <Link to={'/adminlogin'}>Admin Login</Link>
+                            <Link onClick={handleAdmin} to={'/adminlogin'}>{location.pathname=='/admindashboard'?'Log out':'Admin Login'}</Link>
                             <Link to={'/schoollogin'}>School Login/Register</Link>
                         </div>
                     </div>
@@ -95,10 +106,10 @@ const Header = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className="header-btns " style={{ display: shouldShrink ? 'flex' : 'none' }}>
+                    {/* <div className="header-btns " style={{ display: shouldShrink ? 'flex' : 'none' }}>
                         <Link to={'/adminlogin'}>Admin Login</Link>
                         <Link to={'/schoollogin'}>School Login/Register</Link>
-                    </div>
+                    </div> */}
                 </nav>
             </div>
             <div className="mobile-nav">
@@ -110,7 +121,7 @@ const Header = () => {
                         <GiHamburgerMenu />
                     </div>
                 </div>
-                <div className='  w-[200px] absolute transition-all duration-300 top-16 h-[100vh] bg-slate-400' style={{right:menu?'0':'-200px'}}>
+                <div className=' hidden w-[200px] absolute transition-all duration-300 top-16 h-[100vh] bg-slate-400' style={{right:menu?'0':'-200px'}}>
                     <ul className=" mobile-nav-links flex flex-col justify-center ">
                         <li>
                             <NavLink to={'/'}>Home</NavLink>

@@ -10,7 +10,7 @@ export default function AllAlerts() {
         return lower.charAt(0).toUpperCase() + lower.slice(1);
     }
     return (
-        <div className='h-[50px]'>
+        <div className='z-[1000] fixed top-[85px] w-[100%] h-[50px]' style={{display:alert?'block':'none'}}>
             {alert && <Stack sx={{ width: '100%' }} spacing={2}>
                 <Alert severity={alert.type}>
                     <AlertTitle>{capitalize(alert.type)}</AlertTitle>

@@ -5,8 +5,10 @@ import { AiOutlinePlus} from "react-icons/ai";
 import MenuItem from '@mui/material/MenuItem';
 import '../Styles/DataEntry.css';
 import alertContext from '../Context/alertContext';
+import { useNavigate } from 'react-router-dom';
 const DataEntry = () => {
   const {showAlert}=useContext(alertContext)
+  const navigate=useNavigate()
   const textFieldStyle = {
     width: '150px',
   };
@@ -85,6 +87,8 @@ const DataEntry = () => {
       showAlert("warning","Please fill all the fields")
     } else {
       // If no empty fields, proceed with form submission
+      showAlert("success","Data Added Successfully")
+      navigate('/')
       console.log('InputFields', inputFields);
       // Add your form submission logic here
     }

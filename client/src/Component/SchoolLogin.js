@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Styles/SchoolLogin.css'
+import '../Styles/Login.css'
 import { Link } from 'react-router-dom'
 const SchoolLogin = () => {
   return (

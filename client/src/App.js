@@ -12,6 +12,8 @@ import SchoolRegister from './Component/SchoolRegister';
 import StepContext from './Component/MultiStepForm/StepContext';
 import AllAlertsContext from './Component/Alerts/AllAlertContext';
 import AllAlerts from './Component/Alerts/AllAlerts';
+import AdminLogin from './Component/AdminLogin';
+import AdminDashboard from './Component/AdminDashboard/AdminDashboard';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route element={<ContactUs/>} path='/contactus' />
           <Route element={<Qna/>} path='/qna' />
           <Route element={<SchoolLogin/>} path='/schoollogin' />
+          <Route element={<AdminLogin/>} path='/adminlogin' />
+          <Route element={<AdminDashboard/>} path='/admindashboard' />
           <Route element={<SchoolRegister/>} path='/schoolregister' />
 
         </Routes>
