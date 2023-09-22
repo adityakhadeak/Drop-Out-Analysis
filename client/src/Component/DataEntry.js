@@ -47,6 +47,21 @@ const DataEntry = () => {
     }
   ];
 
+  const gender = [
+    {
+      value: 'male',
+      label: 'Male',
+    },
+    {
+      value: 'female',
+      label: 'Female',
+    },
+    {
+      value: 'other',
+      label: 'Other',
+    }
+  ];
+
   const standardOptions = [];
   for (let i = 1; i <= 12; i++) {
     standardOptions.push(i);
@@ -109,6 +124,7 @@ const DataEntry = () => {
               <tr className='table-heading'>
                 <th>Sr No.</th>
                 <th>Full Name</th>
+                <th>Gender</th>
                 <th>Standard</th>
                 <th>LC No.</th>
                 <th>Caste</th>
@@ -127,6 +143,22 @@ const DataEntry = () => {
                       inputProps={{ required: true }}
                       onChange={(event) => handleChangeInput(index, event)}
                     />
+                  </td>
+                  <td>
+                    <TextField
+                      name="gender"
+                      select
+                      style={textFieldStyle}
+                      value={inputField.name}
+                      inputProps={{ required: true }}
+                      onChange={(event) => handleChangeInput(index, event)}
+                    >
+                      {gender.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                      </TextField>
                   </td>
                   <td>
                     <TextField
