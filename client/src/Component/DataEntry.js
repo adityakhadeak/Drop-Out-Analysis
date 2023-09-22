@@ -14,7 +14,7 @@ const DataEntry = () => {
   };
 
   const [inputFields, setInputFields] = useState([
-    { name: '', standard: '', lcno: '', caste: '', reason: '' },
+    { name: '', standard: '', gender: '', lcno: '', caste: '', reason: '' },
   ]);
 
   const castes = [
@@ -47,7 +47,7 @@ const DataEntry = () => {
     }
   ];
 
-  const gender = [
+  const genders = [
     {
       value: 'male',
       label: 'Male',
@@ -74,7 +74,7 @@ const DataEntry = () => {
   };
 
   const handleAddData = () => {
-    setInputFields([...inputFields, { name: '', standard: '', lcno: '', caste: '', reason: '' }]);
+    setInputFields([...inputFields, { name: '', standard: '', gender:'', lcno: '', caste: '', reason: '' }]);
   };
 
   const handleRemoveData = (index) => {
@@ -91,6 +91,7 @@ const DataEntry = () => {
       return (
         inputField.name === "" ||
         inputField.standard === "" ||
+        inputField.gender === "" ||
         inputField.lcno === "" ||
         inputField.caste === "" ||
         inputField.reason === ""
@@ -145,20 +146,20 @@ const DataEntry = () => {
                     />
                   </td>
                   <td>
-                    <TextField
+                  <TextField
                       name="gender"
                       select
-                      style={textFieldStyle}
-                      value={inputField.name}
+                      value={inputField.gender}
                       inputProps={{ required: true }}
+                      style={textFieldStyle}
                       onChange={(event) => handleChangeInput(index, event)}
                     >
-                      {gender.map((option) => (
+                      {genders.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                           {option.label}
                         </MenuItem>
                       ))}
-                      </TextField>
+                    </TextField>
                   </td>
                   <td>
                     <TextField
