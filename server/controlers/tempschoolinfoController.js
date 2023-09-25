@@ -29,11 +29,11 @@ router.use(express.json());
   newschoolinfo.save()
   .then(
         console.log('All Data Entries saved:', newschoolinfo),
-        res.json({message:'Application sent succesfully for Verification'})
+        res.json({message:'Application sent succesfully for Verification',success:"true"})
     )
     .catch(error => {
       console.error('Error saving Data Entry:', error);
-      res.status(500).json({ error: 'Error to send a Application' });
+      res.status(500).json({ error: 'Error to send a Application',success:"true"});
     });
 }
 

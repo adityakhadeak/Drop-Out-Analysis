@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { TextField, IconButton } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { AiOutlinePlus } from "react-icons/ai";
@@ -17,7 +17,6 @@ const DataEntry = () => {
   const [inputFields, setInputFields] = useState([
     { name: '', standard: '', gender: '', lcno: '', caste: '', reason: '', schoolid: '' },
   ]);
-
 
   const castes = [
     {
@@ -118,6 +117,17 @@ const DataEntry = () => {
     }
   };
 
+  useEffect(() => {
+    if (localStorage.getItem('token') == null) {
+        navigate("/schoollogin")
+    }
+    else {
+
+        // fetchAllNotes()
+    }
+    // eslint-disable-next-line
+
+}, [])
 
   return (
     <div className="dataEntrySection">

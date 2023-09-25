@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -7,69 +7,77 @@ import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill }
     from 'react-icons/bs'
 
 
-const data = [{
-    schoolname: 'Holy Writ',
-    id: '10212',
-    pricipalname: 'xerer',
-    schoolemail: 'agadg',
-    schoolcontact: 'asdgsa',
-    schoolboard: 'gadsg',
-    district: 'dgad',
-    taluka: 'sdgs',
-    city: 'sgs',
-    pincode: 'sdgs',
-    resname: 'sdgs',
-    resid: 'aga',
-    position: 'aga',
-    resemail: 'aga',
-    resmobno: 'aga',
-    certificate: 'https://www.pdf995.com/samples/pdf.pdf',
-    dateofres: 'asas'
-},
-{
-    schoolname: 'Holy Writ',
-    id: '10212',
-    pricipalname: 'xerer',
-    schoolemail: 'agadg',
-    schoolcontact: 'asdgsa',
-    schoolboard: 'gadsg',
-    district: 'dgad',
-    taluka: 'sdgs',
-    city: 'sgs',
-    pincode: 'sdgs',
-    resname: 'sdgs',
-    resid: 'aga',
-    position: 'aga',
-    resemail: 'aga',
-    resmobno: 'aga',
-    certificate: 'https://www.pdf995.com/samples/pdf.pdf',
-    dateofres: 'asas'
-},
-{
-    schoolname: 'Holy Writ',
-    id: '10212',
-    pricipalname: 'xerer',
-    schoolemail: 'agadg',
-    schoolcontact: 'asdgsa',
-    schoolboard: 'gadsg',
-    district: 'dgad',
-    taluka: 'sdgs',
-    city: 'sgs',
-    pincode: 'sdgs',
-    resname: 'sdgs',
-    resid: 'aga',
-    position: 'aga',
-    resemail: 'aga',
-    resmobno: 'aga',
-    certificate: 'https://www.pdf995.com/samples/pdf.pdf',
-    dateofres: 'asas'
-}
-
-
-]
-
 
 const AdminHome = () => {
+    const [data, setData] = useState([]);
+
+
+  // Step 1: Create a function to fetch data
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/application/fetchApplication'); // Replace with your actual API endpoint
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const jsonData = await response.json();
+      setData(jsonData); // Step 4: Update the data state
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
+  };
+
+   // Step 3: Fetch data when the component mounts
+   useEffect(() => {
+    fetchData();
+  }, [data]);
+
+  const acceptSchool = async (item) => {
+    try {
+        const response = await fetch('http://localhost:5000/school/accept', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(item),
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        else{
+            alert("School Accepted")
+        }
+
+    } catch (error) {
+        console.error('Error accepting school:', error);
+    }
+};
+
+const rejectSchool = async (item) => {
+    try {
+        const response = await fetch('http://localhost:5000/school/reject', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(item),
+        });
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        else{
+            alert("School Rejected")
+        }
+
+    } catch (error) {
+        console.error('Error rejecting school:', error);
+    }
+};
+
+
+
     return (
         <main className='main-container'>
             <div className='flex justify-between text-3xl p-3 my-3 mx-2'>
@@ -122,7 +130,7 @@ const AdminHome = () => {
                                 >
                                     <div className='flex justify-between'>
                                         <div className='mx-2 font-extrabold text-lg'>School Name: {item.schoolname}</div>
-                                        <div className='mx-2 font-extrabold text-lg' >School ID: {item.id}</div>
+                                        <div className='mx-2 font-extrabold text-lg' >School ID: {item.schoolid}</div>
                                     </div>
                                 </AccordionSummary>
                                 <AccordionDetails>
@@ -133,7 +141,7 @@ const AdminHome = () => {
                                             <div className='flex '>
                                                 <div className='m-2 p-2'>
                                                     <h4 className='font-bold'>Principal Name</h4>
-                                                    <h3>{item.pricipalname}</h3>
+                                                    <h3>{item.principalname}</h3>
                                                 </div>
                                                 <div className='m-2 p-2'>
                                                     <h4 className='font-bold'>School Email</h4>
@@ -225,10 +233,10 @@ const AdminHome = () => {
                                         <div className='bg-slate-400  flex flex-wrap'>
 
                                             <div className='m-2 p-2'>
-                                                <button className='btn w-[100px]' >Accept</button>
+                                                <button className='btn w-[100px]' onClick={() => acceptSchool(item)}>Accept</button>
                                             </div>
                                             <div className='m-2 p-2'>
-                                                <button className='btn w-[100px]' >Reject</button>
+                                                <button className='btn w-[100px]' onClick={() => rejectSchool(item)}>Reject</button>
                                             </div>
 
                                         </div>

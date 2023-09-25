@@ -7,7 +7,7 @@ const StepContext = (props) => {
   // Initialize userData as an object with form field keys
   const [userData, setUserData] = useState({
     schoolname: '', 
-    id: '', 
+    schoolid: '', 
     pricipalname: '', 
     schoolemail: '', 
     schoolcontact: '', 
@@ -38,7 +38,7 @@ const StepContext = (props) => {
     // Reset userData to an object with the same keys
     setUserData({
       schoolname: '', 
-      id: '', 
+      schoolid: '', 
       pricipalname: '', 
       schoolemail: '', 
       schoolcontact: '', 

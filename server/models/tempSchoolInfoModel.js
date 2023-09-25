@@ -19,10 +19,14 @@ const tempSchoolInfoSchema = new mongoose.Schema({
     sctaluka: String,
     sccity: String,
     scpincode: Number,
+    // sccertificate: {
+    //     data: Buffer, // Use Buffer type to store binary data (PDF content)
+    //     contentType: String, // Store the content type (e.g., 'application/pdf')
+    //   },
     sccertificate: {
-        data: Buffer, // Use Buffer type to store binary data (PDF content)
-        contentType: String, // Store the content type (e.g., 'application/pdf')
-      },
+      type:String// Use Buffer type to store binary data (PDF content)
+     // Store the content type (e.g., 'application/pdf')
+    },
       repname: String,
       repid:{
         type: String,

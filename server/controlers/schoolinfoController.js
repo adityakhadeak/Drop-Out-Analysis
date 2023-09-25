@@ -5,7 +5,7 @@ import schoolinfo from '../models/schoolInfoModel.js';
 import tempSchoolinfo from '../models/tempSchoolInfoModel.js';
 import logininfo from '../models/loginInfoModel.js'
 import bcrypt from 'bcryptjs';
-
+import jwt from 'jsonwebtoken'
 const router = express.Router();
 
 
@@ -62,7 +62,8 @@ async function sendEmail(tomail, text, subject) {
   newschoolinfo.save()
     .then(console.log("All Data Entries saved:", newschoolinfo))
     .catch((error) => {
-      console.error("Error saving Data Entry:", error);
+      // console.error("Error saving Data Entry:", error);
+    console.log(error)
       res.status(500).json({ error: "Error saving Data Entry" });
     });
 
@@ -82,7 +83,7 @@ async function sendEmail(tomail, text, subject) {
   const newlogininfo = new logininfo({
     scname: data.schoolname,
     scemail: data.schoolemail,
-    scid: data.id,
+    scid: data.schoolid,
     scusername: username,
     scpassword: hashedPassword,
   });
@@ -95,7 +96,7 @@ async function sendEmail(tomail, text, subject) {
   console.log(result);
   sendEmail(tomail, text, subject)
     .then(() => {
-      res.status(200).json({ message: "Email sent successfully" });
+      // res.status(200).json({ message: "Email sent successfully" });
       newlogininfo
         .save()
         .then(console.log("login info is saved :", newlogininfo));
@@ -104,8 +105,10 @@ async function sendEmail(tomail, text, subject) {
           id: newlogininfo.scid
         }
       };
+      console.log(data)
       const authtoken=jwt.sign(data,process.env.JWT_SECRET)
-      res.status(200).json({ message: authtoken });
+      console.log(authtoken)
+      res.status(200).json({ message: authtoken ,sentMail:"Email sent successfully"});
     })
     .catch((error) => {
       res.status(500).json({ message: "Email could not be sent", error });

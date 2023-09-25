@@ -4,8 +4,12 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import Input from '@mui/material/Input';
 import multiStepFormContext from '../../Context/multiStepFormContext';
+import {BASE_URL} from '../../helper.js'
+import { useNavigate } from 'react-router-dom'
+
 
 function ThirdStep() {
+  const navigate = useNavigate()
   const { handleSubmit, handleChange, setCurrentStep, userData } = useContext(multiStepFormContext);
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -33,6 +37,26 @@ function ThirdStep() {
     const file = event.target.files[0];
     setSelectedFile(file);
   };
+
+
+
+  const handleRegister = async (e) => {
+      const response = await fetch(`${BASE_URL}/application/submit`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData) // body data type must match "Content-Type" header
+      });
+      const json = await response.json()
+      if (json.success=="true") {
+        navigate('/')
+        alert("success",json.message)
+      }
+      else {
+        alert("error",json.error)      }
+    
+  }
 
   return (
     <div className='flex justify-center items-center flex-col'>
@@ -82,7 +106,7 @@ function ThirdStep() {
 
       <div className='flex m-1 p-2 items-center justify-between w-[100%]'>
         <button className='btn w-[90px]' onClick={() => { setCurrentStep(2) }}>Back</button>
-        <button onClick={handleSubmit} className='btn w-[90px]'>Submit</button>
+        <button onClick={handleRegister} className='btn w-[90px]'>Submit</button>
       </div>
     </div>
   );

@@ -31,6 +31,13 @@ const Header = () => {
             showAlert('success','Logged Out Succesfully')
         }
     }
+
+    const logout=()=>{
+        localStorage.removeItem('token')
+        navigate('/schoollogin')
+        showAlert("success","Logged Out Successfully")
+    }
+
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 60) {
@@ -64,8 +71,12 @@ const Header = () => {
                     </div>
                     <div className="header-right">
                         <div className="header-btns">
-                            <Link onClick={handleAdmin} to={'/adminlogin'}>{location.pathname=='/admindashboard'?'Log out':'Admin Login'}</Link>
-                            <Link to={'/schoollogin'}>School Login/Register</Link>
+                        {!localStorage.getItem("admin")&&<Link onClick={handleAdmin} to={'/adminlogin'}>Admin Login</Link>}
+                        {localStorage.getItem("admin")&&<Link onClick={handleAdmin} to={'/adminlogin'}>Admin Logout</Link>}
+                        {/* {!localStorage.getItem("token")&&<Link onClick={handleAdmin} to={'/adminlogin'}>{location.pathname=='/admindashboard'?'Log out':'Admin Login'}</Link>} */}
+                        {!localStorage.getItem("token") && <Link to={'/schoollogin'}>School Login/Register</Link>}
+                        {localStorage.getItem("token") && <Link  onClick={logout} to={'/schoollogin'}>School Logout</Link>}
+
                         </div>
                     </div>
                 </div>

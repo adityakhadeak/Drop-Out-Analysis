@@ -22,14 +22,16 @@ router.post('/schoollogin', async (req, res) => {
         console.log(user)
         if (!user) {
             return res.status(400).json({
-                message: "EMail worng"
+                message: "EMail worng",
+                success
             });
         }
         // comparing the password
         const comparePass = await bcrypt.compare(password, user.scpassword); // Change this to user.password
         if (!comparePass) {
             return res.status(400).json({
-                message: "Invalid Credentials"
+                message: "Invalid Credentials",
+                success
             });
         }
         const data = {
