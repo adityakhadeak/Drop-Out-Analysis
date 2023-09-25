@@ -1,0 +1,86 @@
+/* Styling for the about-us-container */
+.about-us-container {
+    max-width: 80%;
+  
+    padding: 5% 3% 1% 20%;
+  }
+  .maincontainer{
+    background-image: url(../images/login-bg.png);
+      
+  }
+  
+  /* Header styles */
+  .header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  .header h1,h2{
+    text-align: center;
+  }
+  .header p {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  /* Project info styles */
+  .project-info h2 {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .project-info p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #666;
+    text-align: left;
+  }
+  
+  /* Team styles */
+  .team h2 {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .team-members-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  /* Team member card styles */
+  .team-member-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    max-width: 300px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Team member name styles */
+  .team-member-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  /* Team member role styles */
+  .team-member-card p {
+    font-size: 16px;
+    color: #555;
+  }
+  /* Styling for active team member card */
+  .team-member-card.active {
+    background-color: #f0f0f0;
+    border: 2px solid #007bff; /* You can change the border color as desired */
+  }

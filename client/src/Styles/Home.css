@@ -51,6 +51,11 @@
     margin-right: -15px;
     margin-left: -15px;
 }
+.select-div{
+    margin: 15px;
+    width: 240px;
+    padding: 10px;
+}
 .statement-box{
     border: 1px solid #37569d;
     padding: 20px 40px;
@@ -114,10 +119,11 @@
     padding: 48px 122px 83px 101px;
 }
 .labelBox label {
-    margin: 0 0 5px 0;
-    font-family: montserratsemibold;
+    margin: 4px;
+    padding: 5px 2px;
+    font-family: 'Montserrat', sans-serif;
     color: #3a488b;
-    font-size: 15px;
+    font-size: 20px;
 }
 select.sortByPS {
     border: 1px solid #3a488b;

@@ -1,0 +1,162 @@
+/* Contact Us Container */
+.contact-us-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-image: url(../images/login-bg.png);
+    text-align: center; /* Center align text within the container */
+  }
+  
+  /* Center align h2 within the container */
+  h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Contact Info Section */
+  .contact-info, .social-media, .contact-form {
+    padding: 2% 3%;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    text-align: left; /* Left-align content within these sections */
+    margin: 10px; /* Add margin for spacing between sections */
+  }
+  .contact-info h1,h2,p{
+    text-align: center;
+  }
+  .contact-info h1, .social-media h2, .contact-form h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-info p {
+    font-size: 16px;
+  }
+  
+  .email, .phone, .fax {
+    margin-top: 20px;
+  }
+  
+  .email h2, .phone h2, .fax h2 {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .email a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  /* Social Media Section */
+  .social-icons {
+    display: flex;
+    justify-content: center; /* Center-align social icons horizontally */
+    gap: 20px;
+  }
+  
+  .social-icons a {
+    text-decoration: none;
+    font-size: 36px;
+    color: #007bff;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .social-icons {
+      flex-wrap: wrap; /* Allow icons to wrap on smaller screens */
+      justify-content: center;
+    }
+  
+    .social-icons a {
+      font-size: 24px; /* Reduce icon size on smaller screens */
+    }
+  }
+  
+  /* Contact Form Section */
+  form{
+    margin-left: 3rem;
+  }
+  .contact-form {
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    padding: 2% 2% 3% 6%;
+    text-align: left; /* Left-align form content */
+    margin: 10px; /* Add margin for spacing between sections */
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+
+  textarea {
+    width: 78%; /* Make form fields full width within the container */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  button{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Styles */
+  @media screen and (max-width: 768px) {
+    .contact-us-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center; /* Center-align text within the container for small screens */
+    }
+  
+    .contact-info, .social-media, .contact-form {
+      max-width: 100%; /* Make sections full width for small screens */
+    }
+  }
+  .address, .office-hours {
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px; /* Add space between sections */
+   
+  }
+  
+  .address h2, .office-hours h2 {
+    font-size: 24px;
+    margin-top: 0; /* Remove default margin */
+  }
+  @media screen and (max-width: 768px) {
+    .contact-us-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .contact-info, .social-media, .contact-form, .address, .office-hours {
+      width: 100%;
+      max-width: 100%;
+    }
+  }

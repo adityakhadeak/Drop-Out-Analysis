@@ -228,10 +228,10 @@ const DataEntry = () => {
             </tbody>
           </table>
           <div className="addMoreBtn">
-            <button onClick={handleAddData} className='btn flex items-center'> Add <AiOutlinePlus className='mx-[1px]'/> </button>
+            <button onClick={handleAddData} className='btn flex items-center w-[80px]'> Add <AiOutlinePlus className='mx-[1px]'/> </button>
           </div>
           <div className="submitBtn text-center">
-            <button  className='btn' onClick={handleSubmit}>
+            <button  className='btn w-[80px]' onClick={handleSubmit}>
               Submit
             </button>
           </div>
