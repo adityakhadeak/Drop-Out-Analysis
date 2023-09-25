@@ -7,23 +7,24 @@ router.use(express.json());
  const tempSchoolInfoController=(req, res) => {
   const data=req.body;
   const newschoolinfo= new tempSchoolinfo({
-  scname:data.schoolname,
-  scid:data.schoolid,
-  scprincipal:data.principalname,
-  scemail:data.schoolemail,
-  sccontact:data.schoolcontact,
-  scboard:data.schoolboard,
-  scdistrict:data.district,
-  sctaluka:data.taluka,
-  sccity:data.city,
-  scpincode:data.pincode,
-  sccertificate:data.certificate,
-  // repname:data.resname,
-  // repid:data.resid,
-  // repposition:data.position,
-  // repemail:data.resemail,
-  // repmobile:data.resmobno,
-  // dateofres:data.dateofres
+    scname: data.schoolname,
+    scid: data.schoolid,
+    scprincipal: data.principalname,
+    scemail: data.schoolemail,
+    sccontact: data.schoolcontact,
+    scboard: data.schoolboard,
+    scdistrict: data.district,
+    sctaluka: data.taluka,
+    sccity: data.city,
+    scpincode: data.pincode,
+    repname: data.resname,
+     repid: data.resid,
+    repposition: data.position,
+    repemail: data.resemail,
+    repmobile: data.resmobno,
+    sccertificate: 'https://www.pdf995.com/samples/pdf.pdf',//item.pdf
+    dateofres: data.dateofres,
+    sccertificatetype:data.certificate
   });
   newschoolinfo.save()
   .then(
@@ -50,7 +51,7 @@ try{
   taluka:item.sctaluka,
   city:item.sccity,
   pincode:item.scpincode,
-  certificate:item.sccertificate,
+  certificate:"https://www.pdf995.com/samples/pdf.pdf",
   repname:item.repname,
   repid:item.repid,
   repposition:item.repposition,
@@ -59,6 +60,7 @@ try{
   dateofres:item.dateofres
   }));
   res.json(dataArray);
+  console.log(dataArray);
 }
 catch (error) {
   console.error('Error fetching data:', error);

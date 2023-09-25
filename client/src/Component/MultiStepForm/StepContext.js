@@ -46,7 +46,7 @@ const StepContext = (props) => {
       district: '', 
       taluka: '', 
       city: '', 
-      pincode: '', 
+      area: '', 
       resname: '', 
       resid: '', 
       position: '', 

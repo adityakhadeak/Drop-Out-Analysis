@@ -81,8 +81,8 @@ function ThirdStep() {
       </div>
 
       <div className='flex m-1 p-2 items-center justify-between w-[100%]'>
-        <button className='btn' onClick={() => { setCurrentStep(2) }}>Back</button>
-        <button onClick={handleSubmit} className='btn'>Submit</button>
+        <button className='btn w-[90px]' onClick={() => { setCurrentStep(2) }}>Back</button>
+        <button onClick={handleSubmit} className='btn w-[90px]'>Submit</button>
       </div>
     </div>
   );

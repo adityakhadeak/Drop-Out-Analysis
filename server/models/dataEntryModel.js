@@ -7,6 +7,7 @@ const dataEntrySchema = new mongoose.Schema({
       type:String,
       unique: true,
     },
+    dogender: String,
     docaste: String,
     doreason: String,
     doScid: String,

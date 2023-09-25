@@ -2,6 +2,7 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import randomstring from 'randomstring';
 import schoolinfo from '../models/schoolInfoModel.js';
+import tempSchoolinfo from '../models/tempSchoolInfoModel.js';
 import logininfo from '../models/loginInfoModel.js'
 import bcrypt from 'bcryptjs';
 
@@ -49,13 +50,14 @@ async function sendEmail(tomail, text, subject) {
     sctaluka: data.taluka,
     sccity: data.city,
     scpincode: data.pincode,
-    resname: data.repname,
-     resid: data.repid,
-     position: data.repposition,
-     resemail: data.repemail,
-     resmobno: data.repmobile,
-     certificate: 'https://www.pdf995.com/samples/pdf.pdf',//item.sccertificate
-     dateofres: data.dateofres
+    repname: data.resname,
+     repid: data.resid,
+    repposition: data.position,
+    repemail: data.resemail,
+    repmobile: data.resmobno,
+    sccertificate: 'https://www.pdf995.com/samples/pdf.pdf',//item.pdf
+    dateofres: data.dateofres,
+    sccertificatetype:data.certificate
   });
   newschoolinfo.save()
     .then(console.log("All Data Entries saved:", newschoolinfo))
@@ -86,7 +88,7 @@ async function sendEmail(tomail, text, subject) {
   });
 
   const query = { scid: data.schoolid };
-  const result = await tempSchoolInfo.deleteOne(query);
+  const result = await tempSchoolinfo.deleteOne(query);
 
   const text = `Your username: ${username}\nYour password: ${password}`;
   const subject = "Your school data is verified for Dropout analysis";
@@ -114,8 +116,8 @@ const rejectSchoolinfoController = async (req, res) => {
   const data = req.body;
   const mail = data.schoolemail;
   const query = { scid: data.schoolid };
-
-  const result = await tempSchoolInfo.deleteOne(query);
+                        
+  const result = await tempSchoolinfo.deleteOne(query);
   const text = 'Please apply again with Corrected Data';
   const subject = "Your school application is Rejected for Dropout analysis";
   console.log(result);

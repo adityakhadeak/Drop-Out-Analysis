@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import { DataGrid } from '@mui/x-data-grid';
 import mybackgrnd from '../images/backgrnd.jpg'
-import { TextField, IconButton } from '@mui/material';
+import { TextField } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import React, { useEffect, useState } from 'react';
 import '../Styles/Home.css';
@@ -9,7 +9,6 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 const columns = [
   { field: 'id', headerName: 'Sr No.', width: 90 },
   {
@@ -74,12 +73,6 @@ const Home = () => {
   const textFieldStyle = {
     width: '250px',
   };
-  const [selectedArea, setSelectedArea] = useState(null)
-  const [selectedSchool, setSelectedSchool] = useState(null)
-  const [selectedStandard, setSelectedStandard] = useState(null)
-  const [selectedGender, setSelectedGender] = useState(null)
-  const [selectedCaste, setSelectedCaste] = useState(null)
-
   const [inputFields, setInputFields] = useState(
     { area: 'all', standard: 'All', school: 'all', gender: 'all', caste: 'all' },
   );
@@ -111,16 +104,12 @@ const Home = () => {
       label: 'All',
     },
     {
-      value: 'thane',
-      label: 'thane',
+      value: 'rural',
+      label: 'Rural',
     },
     {
-      value: 'panvel',
-      label: 'pavel',
-    },
-    {
-      value: 'badlpur',
-      label: 'badlpur',
+      value: 'urban',
+      label: 'Urban',
     },
   ];
 
@@ -153,9 +142,7 @@ for (let i = 1; i <= 12; i++) {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  }
+  
 
   useEffect(() => {
     console.log(inputFields)
@@ -163,7 +150,7 @@ for (let i = 1; i <= 12; i++) {
   return (
     <div className='Fullhome'>
       <div className="carousel-item active">
-        <img className="img" src={mybackgrnd} alt="My Image" />
+        <img className="img" src={mybackgrnd} alt='img'/>
         <div className="carousel-caption">
           <h3 className="prob-statement">Dropout Students</h3>
 

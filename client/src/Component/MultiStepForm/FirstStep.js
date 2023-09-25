@@ -6,7 +6,16 @@ import multiStepFormContext from '../../Context/multiStepFormContext';
 
 const FirstStep = () => {
   const { handleChange, setCurrentStep, userData } = useContext(multiStepFormContext);
-
+  const area = [
+    {
+      value: 'rural',
+      label: 'Rural',
+    },
+    {
+      value: 'urban',
+      label: 'Urban',
+    },
+  ];
   return (
     <>
       <div className='flex  flex-col items-center'>
@@ -126,18 +135,24 @@ const FirstStep = () => {
             ))}
           </TextField>
           <TextField
-            name='pincode'
-            label='Pincode'
-            type='number'
-            value={userData['pincode'] || ''}
-            onChange={(event) => handleChange(event)}
-            className='mx-1 z-0'
-            variant="outlined"
-          />
+              name="area"
+              label='Area'
+              select
+              value={userData['area'] || ''}
+              onChange={(event) => handleChange(event)}
+              className='mx-1 z-0 w-[210px]'
+              variant="outlined"
+              >
+              {area.map((option, index) => (
+                <MenuItem key={index} value={option.value}>
+                  {option.label}
+                </MenuItem>
+              ))}
+            </TextField>
         </div>
       </div>
       <div className='flex m-1 p-2 justify-between'>
-        <button onClick={() => { setCurrentStep(2) }} className='btn'>
+        <button onClick={() => { setCurrentStep(2) }} className='btn w-[90px]'>
           Next
         </button>
       </div>

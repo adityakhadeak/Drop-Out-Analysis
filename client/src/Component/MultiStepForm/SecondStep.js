@@ -3,7 +3,7 @@ import { TextField } from '@mui/material'
 import multiStepFormContext from '../../Context/multiStepFormContext'
 
 const SecondStep = () => {
-  const { handleChange, currentStep, setCurrentStep, userData, setUserData, finalData, setFinalData } = useContext(multiStepFormContext)
+  const { handleChange, setCurrentStep, userData} = useContext(multiStepFormContext)
 
   return (
     <div className='flex justify-center flex-col items-center'>
@@ -25,8 +25,8 @@ const SecondStep = () => {
         </div>
       </div>
       <div className='flex m-1 p-2 justify-between w-[100%]'>
-        <button className='btn' onClick={() => { setCurrentStep(1) }}>Back</button>
-        <button onClick={() => { setCurrentStep(3) }} className='btn'>Next</button>
+        <button className='btn w-[90px]' onClick={() => { setCurrentStep(1) }}>Back</button>
+        <button onClick={() => { setCurrentStep(3) }} className='btn w-[90px]'>Next</button>
       </div>
     </div>
   )

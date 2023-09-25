@@ -1,21 +1,23 @@
 import React, { useContext, useState } from 'react';
 import { TextField, IconButton } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { AiOutlinePlus} from "react-icons/ai";
+import { AiOutlinePlus } from "react-icons/ai";
 import MenuItem from '@mui/material/MenuItem';
 import '../Styles/DataEntry.css';
 import alertContext from '../Context/alertContext';
 import { useNavigate } from 'react-router-dom';
 const DataEntry = () => {
-  const {showAlert}=useContext(alertContext)
-  const navigate=useNavigate()
+  const { showAlert } = useContext(alertContext)
+  const navigate = useNavigate()
   const textFieldStyle = {
     width: '150px',
   };
 
+  const [schoolId, setSchoolId] = useState({ schoolid: '' });
   const [inputFields, setInputFields] = useState([
-    { name: '', standard: '', gender: '', lcno: '', caste: '', reason: '' },
+    { name: '', standard: '', gender: '', lcno: '', caste: '', reason: '', schoolid: '' },
   ]);
+
 
   const castes = [
     {
@@ -67,14 +69,19 @@ const DataEntry = () => {
     standardOptions.push(i);
   }
 
+  const handleChange = (event) => {
+    setSchoolId({ schoolid: event.target.value });
+  };
+
   const handleChangeInput = (index, event) => {
     const values = [...inputFields];
     values[index][event.target.name] = event.target.value;
+    values[index]['schoolid'] = schoolId.schoolid;
     setInputFields(values);
   };
 
   const handleAddData = () => {
-    setInputFields([...inputFields, { name: '', standard: '', gender:'', lcno: '', caste: '', reason: '' }]);
+    setInputFields([...inputFields, { name: '', standard: '', gender: '', lcno: '', caste: '', reason: '', schoolid: schoolId.schoolid }]);
   };
 
   const handleRemoveData = (index) => {
@@ -85,10 +92,11 @@ const DataEntry = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Check if any of the required fields are empty
     const isEmptyField = inputFields.some((inputField) => {
       return (
+        schoolId.schoolid === "" ||
         inputField.name === "" ||
         inputField.standard === "" ||
         inputField.gender === "" ||
@@ -97,19 +105,19 @@ const DataEntry = () => {
         inputField.reason === ""
       );
     });
-  
+
     if (isEmptyField) {
       // Handle empty fields (e.g., display an error message)
-      showAlert("warning","Please fill all the fields")
+      showAlert("warning", "Please fill all the fields")
     } else {
       // If no empty fields, proceed with form submission
-      showAlert("success","Data Added Successfully")
+      showAlert("success", "Data Added Successfully")
       navigate('/')
       console.log('InputFields', inputFields);
       // Add your form submission logic here
     }
   };
-  
+
 
   return (
     <div className="dataEntrySection">
@@ -120,6 +128,15 @@ const DataEntry = () => {
       </div>
       <div className='form-con'>
         <form className="dataEntryForm" onSubmit={handleSubmit}>
+          <div className='schoolid my-3 '>
+            <div className='my-2 font-bold'>School ID</div>
+            <TextField
+              name="schoolid"
+              value={schoolId.schoolid}
+              inputProps={{ required: true }}
+              onChange={handleChange}
+            />
+          </div>
           <table className="dataEntryTable">
             <thead>
               <tr className='table-heading'>
@@ -140,13 +157,14 @@ const DataEntry = () => {
                   <td>
                     <TextField
                       name="name"
+                      type='text'
                       value={inputField.name}
                       inputProps={{ required: true }}
                       onChange={(event) => handleChangeInput(index, event)}
                     />
                   </td>
                   <td>
-                  <TextField
+                    <TextField
                       name="gender"
                       select
                       value={inputField.gender}
@@ -228,10 +246,10 @@ const DataEntry = () => {
             </tbody>
           </table>
           <div className="addMoreBtn">
-            <button onClick={handleAddData} className='btn flex items-center w-[80px]'> Add <AiOutlinePlus className='mx-[1px]'/> </button>
+            <button onClick={handleAddData} className='btn flex items-center w-[80px]'> Add <AiOutlinePlus className='mx-[1px]' /> </button>
           </div>
           <div className="submitBtn text-center">
-            <button  className='btn w-[80px]' onClick={handleSubmit}>
+            <button className='btn w-[80px]' onClick={handleSubmit}>
               Submit
             </button>
           </div>

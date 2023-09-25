@@ -12,6 +12,7 @@ import dataentry from "../models/dataEntryModel.js"
           dostd: dataObj.standard,
           dolc: dataObj.lcno,
           docaste: dataObj.caste,
+          dogender: dataObj.gender,
           doreason: dataObj.reason
         });
 
@@ -44,4 +45,13 @@ import dataentry from "../models/dataEntryModel.js"
     // Iterate over each object in the array and save it
   
   }
+
+
+  const showdata=async(req,res)=>{
+data=req.body;
+
+  }  
+  
+  
+  
   export default dataEntry;
