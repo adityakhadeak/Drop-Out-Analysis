@@ -17,6 +17,7 @@ const AdminLogin = () => {
     e.preventDefault()
 
     if (credentials.username == "infinity" && credentials.password == "00000000") {
+      localStorage.setItem("admin","loggedin")
       showAlert("success", "Logged In Successfully")
       navigate('/admindashboard')
     }

@@ -7,6 +7,7 @@ const dataEntrySchema = new mongoose.Schema({
       type:String,
       unique: true,
     },
+    dooccupation: String,
     dogender: String,
     docaste: String,
     doreason: String,

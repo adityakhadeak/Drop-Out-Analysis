@@ -5,12 +5,13 @@ import dataentry from "../models/dataEntryModel.js"
   
     // Create an array to store saved data entries
     const savedDataEntries = [];
-  
+        let success=false
         dataArray.forEach(dataObj => {
         const newdataentry = new dataentry({
           doname: dataObj.name,
           dostd: dataObj.standard,
           dolc: dataObj.lcno,
+          dooccupation: dataObj.occupation,
           docaste: dataObj.caste,
           dogender: dataObj.gender,
           doreason: dataObj.reason
@@ -20,7 +21,7 @@ import dataentry from "../models/dataEntryModel.js"
         const existingDataEntry = dataentry.findOne({ dolc: dataObj.lcno });
         if (existingDataEntry.length > 0) {
           console.log('Data Entry already exists:',dataObj.lcno);
-          res.json({error:"Data Entry already exists"});
+          res.json({error:"Data Entry already exists",success});
         }
         else{       
           // Save the new dataentry object to the database
@@ -28,11 +29,12 @@ import dataentry from "../models/dataEntryModel.js"
           newdataentry.save()
             .then(savedDataEntry => {
               savedDataEntries.push(savedDataEntry);
-      
+
               // Check if all objects have been saved
               if (savedDataEntries.length === dataArray.length) {
+                success=true
                 console.log('All Data Entries saved:', savedDataEntries);
-                res.json(savedDataEntries);
+                res.status(200).json({savedDataEntries,success});
               }
             })
             .catch(error => {

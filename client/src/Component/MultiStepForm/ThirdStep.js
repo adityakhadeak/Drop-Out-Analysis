@@ -6,10 +6,14 @@ import Input from '@mui/material/Input';
 import multiStepFormContext from '../../Context/multiStepFormContext';
 import {BASE_URL} from '../../helper.js'
 import { useNavigate } from 'react-router-dom'
+import alertContext from '../../Context/alertContext.js';
 
 
 function ThirdStep() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { showAlert } = useContext(alertContext)
+
+  
   const { handleSubmit, handleChange, setCurrentStep, userData } = useContext(multiStepFormContext);
 
   const [selectedFile, setSelectedFile] = useState(null);
@@ -41,6 +45,7 @@ function ThirdStep() {
 
 
   const handleRegister = async (e) => {
+    handleSubmit()
       const response = await fetch(`${BASE_URL}/application/submit`, {
         method: "POST",
         headers: {
@@ -51,10 +56,10 @@ function ThirdStep() {
       const json = await response.json()
       if (json.success=="true") {
         navigate('/')
-        alert("success",json.message)
+        showAlert("success",json.message)
       }
       else {
-        alert("error",json.error)      }
+        showAlert("error",json.error)      }
     
   }
 

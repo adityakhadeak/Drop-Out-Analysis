@@ -52,15 +52,14 @@ try{
   city:item.sccity,
   pincode:item.scpincode,
   certificate:"https://www.pdf995.com/samples/pdf.pdf",
-  repname:item.repname,
-  repid:item.repid,
-  repposition:item.repposition,
-  repemail:item.repemail,
-  repmobno:item.repmobno,
+  resname:item.repname,
+  resid:item.repid,
+  position:item.repposition,
+  resemail:item.repemail,
+  resmobno:item.repmobile,
   dateofres:item.dateofres
   }));
   res.json(dataArray);
-  console.log(dataArray);
 }
 catch (error) {
   console.error('Error fetching data:', error);

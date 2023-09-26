@@ -105,9 +105,7 @@ async function sendEmail(tomail, text, subject) {
           id: newlogininfo.scid
         }
       };
-      console.log(data)
       const authtoken=jwt.sign(data,process.env.JWT_SECRET)
-      console.log(authtoken)
       res.status(200).json({ message: authtoken ,sentMail:"Email sent successfully"});
     })
     .catch((error) => {

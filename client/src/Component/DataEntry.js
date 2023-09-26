@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import '../Styles/DataEntry.css';
 import alertContext from '../Context/alertContext';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../helper';
 const DataEntry = () => {
   const { showAlert } = useContext(alertContext)
   const navigate = useNavigate()
@@ -15,7 +16,7 @@ const DataEntry = () => {
 
   const [schoolId, setSchoolId] = useState({ schoolid: '' });
   const [inputFields, setInputFields] = useState([
-    { name: '', standard: '', gender: '', lcno: '', caste: '', reason: '', schoolid: '' },
+    { name: '', standard: '', gender: '', lcno: '',occupation:'', caste: '', reason: '', schoolid: '' },
   ]);
 
   const castes = [
@@ -35,6 +36,21 @@ const DataEntry = () => {
       value: 'st',
       label: 'ST',
     },
+  ];
+
+  const occupations = [
+    {
+      value: 'farmer',
+      label: 'Farmer',
+    },
+    {
+      value: 'engineer',
+      label: 'Engineer',
+    },
+    {
+      value: 'teacher',
+      label: 'Teacher',
+    }
   ];
 
   const reasons = [
@@ -80,7 +96,7 @@ const DataEntry = () => {
   };
 
   const handleAddData = () => {
-    setInputFields([...inputFields, { name: '', standard: '', gender: '', lcno: '', caste: '', reason: '', schoolid: schoolId.schoolid }]);
+    setInputFields([...inputFields, { name: '', standard: '', gender: '', lcno: '',occupation:'', caste: '', reason: '', schoolid: schoolId.schoolid }]);
   };
 
   const handleRemoveData = (index) => {
@@ -89,7 +105,7 @@ const DataEntry = () => {
     setInputFields(values);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
 
     // Check if any of the required fields are empty
@@ -100,6 +116,7 @@ const DataEntry = () => {
         inputField.standard === "" ||
         inputField.gender === "" ||
         inputField.lcno === "" ||
+        inputField.occupation === "" ||
         inputField.caste === "" ||
         inputField.reason === ""
       );
@@ -110,8 +127,24 @@ const DataEntry = () => {
       showAlert("warning", "Please fill all the fields")
     } else {
       // If no empty fields, proceed with form submission
-      showAlert("success", "Data Added Successfully")
+
+      const response = await fetch(`${BASE_URL}/data/main`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputFields) // body data type must match "Content-Type" header
+      });
+      const json = await response.json()
+      if (json.success) {
+        showAlert("success", "Data Added Successfully")
       navigate('/')
+      }
+      else{
+        showAlert("error", "Some Internal error occured")
+
+      }
+     
       console.log('InputFields', inputFields);
       // Add your form submission logic here
     }
@@ -119,15 +152,15 @@ const DataEntry = () => {
 
   useEffect(() => {
     if (localStorage.getItem('token') == null) {
-        navigate("/schoollogin")
+      navigate("/schoollogin")
     }
     else {
 
-        // fetchAllNotes()
+      // fetchAllNotes()
     }
     // eslint-disable-next-line
 
-}, [])
+  }, [])
 
   return (
     <div className="dataEntrySection">
@@ -155,6 +188,7 @@ const DataEntry = () => {
                 <th>Gender</th>
                 <th>Standard</th>
                 <th>LC No.</th>
+                <th>Parent Occup.</th>
                 <th>Caste</th>
                 <th>Reason</th>
                 <th>Actions</th>
@@ -212,6 +246,22 @@ const DataEntry = () => {
                       inputProps={{ required: true }}
                       onChange={(event) => handleChangeInput(index, event)}
                     />
+                  </td>
+                  <td>
+                    <TextField
+                      name="occupation"
+                      select
+                      value={inputField.occupation}
+                      inputProps={{ required: true }}
+                      style={textFieldStyle}
+                      onChange={(event) => handleChangeInput(index, event)}
+                    >
+                      {occupations.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
+                    </TextField>
                   </td>
                   <td>
                     <TextField

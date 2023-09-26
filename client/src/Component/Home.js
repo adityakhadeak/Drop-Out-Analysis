@@ -9,6 +9,7 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
+import { useNavigate } from 'react-router-dom';
 const columns = [
   { field: 'id', headerName: 'Sr No.', width: 90 },
   {
@@ -73,6 +74,8 @@ const Home = () => {
   const textFieldStyle = {
     width: '250px',
   };
+  const navigate = useNavigate()
+
   const [inputFields, setInputFields] = useState(
     { area: 'all', standard: 'All', school: 'all', gender: 'all', caste: 'all' },
   );
@@ -129,7 +132,6 @@ const Home = () => {
   ];
 
   
-
   const standardOptions = ['All']; // Initialize the array with 'All'
 for (let i = 1; i <= 12; i++) {
   standardOptions.push(i.toString()); // Convert i to a string and push it to the array
@@ -146,6 +148,14 @@ for (let i = 1; i <= 12; i++) {
 
   useEffect(() => {
     console.log(inputFields)
+    if (localStorage.getItem('admin') == null) {
+      navigate("/adminlogin")
+    }
+    else {
+
+      // fetchAllNotes()
+    }
+
   }, [inputFields])
   return (
     <div className='Fullhome'>

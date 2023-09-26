@@ -1,15 +1,17 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, useContext } from 'react'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill }
     from 'react-icons/bs'
+import alertContext from  '../../Context/alertContext.js';
 
 
 
 const AdminHome = () => {
     const [data, setData] = useState([]);
+const { showAlert } = useContext(alertContext)
 
 
   // Step 1: Create a function to fetch data
@@ -46,7 +48,7 @@ const AdminHome = () => {
             throw new Error('Network response was not ok');
         }
         else{
-            alert("School Accepted")
+            showAlert("success", "School Accepted")
         }
 
     } catch (error) {
@@ -68,7 +70,7 @@ const rejectSchool = async (item) => {
             throw new Error('Network response was not ok');
         }
         else{
-            alert("School Rejected")
+            showAlert("error", "School Rejected")
         }
 
     } catch (error) {
@@ -118,7 +120,7 @@ const rejectSchool = async (item) => {
 
             <div className='applications'>
                 <h1 className='text-3xl p-3 my-3 mx-2'>Applications</h1>
-                <div>
+                 <div>
                     {data.map((item, index) => (
                         <div className='my-2 flex items-center ' key={index}>
                             <div className='mr-3'>{index + 1}</div>
@@ -172,10 +174,10 @@ const rejectSchool = async (item) => {
                                                     <h4 className='font-bold'>City</h4>
                                                     <h3>{item.city}</h3>
                                                 </div>
-                                                <div className='m-2 p-2'>
+                                                {/* <div className='m-2 p-2'>
                                                     <h4 className='font-bold'>Pincode</h4>
                                                     <h3>{item.pincode}</h3>
-                                                </div>
+                                                </div> */}
                                             </div>
                                         </div>
 
