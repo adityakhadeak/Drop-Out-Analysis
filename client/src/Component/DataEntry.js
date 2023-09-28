@@ -137,12 +137,11 @@ const DataEntry = () => {
       });
       const json = await response.json()
       if (json.success) {
-        showAlert("success", "Data Added Successfully")
+        showAlert("success", json.message)
       navigate('/')
       }
       else{
-        showAlert("error", "Some Internal error occured")
-
+        showAlert("error", json.message)
       }
      
       console.log('InputFields', inputFields);

@@ -78,6 +78,7 @@ const Header = () => {
                         <div className="header-btns">
                         {!localStorage.getItem("admin")&&<Link onClick={handleAdmin} to={'/adminlogin'}>Admin Login</Link>}
                         {localStorage.getItem("admin")&&<Link onClick={adminlogout} to={'/adminlogin'}>Admin Logout</Link>}
+                        {localStorage.getItem("admin")&&<Link to={'/admindashboard'}>Admin Dashboard</Link>}
                         {/* {!localStorage.getItem("token")&&<Link onClick={handleAdmin} to={'/adminlogin'}>{location.pathname=='/admindashboard'?'Log out':'Admin Login'}</Link>} */}
                         {!localStorage.getItem("token") && <Link to={'/schoollogin'}>School Login/Register</Link>}
                         {localStorage.getItem("token") && <Link  onClick={logout} to={'/schoollogin'}>School Logout</Link>}

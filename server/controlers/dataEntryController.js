@@ -21,7 +21,7 @@ import dataentry from "../models/dataEntryModel.js"
         const existingDataEntry = dataentry.findOne({ dolc: dataObj.lcno });
         if (existingDataEntry.length > 0) {
           console.log('Data Entry already exists:',dataObj.lcno);
-          res.json({error:"Data Entry already exists",success});
+          res.json({message:"Data Entry already exists",success});
         }
         else{       
           // Save the new dataentry object to the database
@@ -34,12 +34,12 @@ import dataentry from "../models/dataEntryModel.js"
               if (savedDataEntries.length === dataArray.length) {
                 success=true
                 console.log('All Data Entries saved:', savedDataEntries);
-                res.status(200).json({savedDataEntries,success});
+                res.status(200).json({message:"Data Saved Successfully",success});
               }
             })
             .catch(error => {
               console.error('Error saving Data Entry:', error);
-              res.status(500).json({ error: 'Error saving Data Entry' });
+              res.status(500).json({ message: 'Student already added' });
             });}
 
       });

@@ -6,10 +6,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill }
     from 'react-icons/bs'
 import alertContext from  '../../Context/alertContext.js';
+import { useNavigate } from 'react-router-dom';
 
 
 
 const AdminHome = () => {
+    const navigate=useNavigate()
     const [data, setData] = useState([]);
 const { showAlert } = useContext(alertContext)
 
@@ -31,9 +33,19 @@ const { showAlert } = useContext(alertContext)
 
    // Step 3: Fetch data when the component mounts
    useEffect(() => {
-    fetchData();
+        if (localStorage.getItem('admin') == null) {
+      navigate("/adminlogin")
+    }
+    else {
+
+        fetchData();
+    }
   }, [data]);
 
+
+    
+
+  
   const acceptSchool = async (item) => {
     try {
         const response = await fetch('http://localhost:5000/school/accept', {
@@ -174,10 +186,10 @@ const rejectSchool = async (item) => {
                                                     <h4 className='font-bold'>City</h4>
                                                     <h3>{item.city}</h3>
                                                 </div>
-                                                {/* <div className='m-2 p-2'>
-                                                    <h4 className='font-bold'>Pincode</h4>
-                                                    <h3>{item.pincode}</h3>
-                                                </div> */}
+                                                <div className='m-2 p-2'>
+                                                    <h4 className='font-bold'>Area</h4>
+                                                    <h3>{item.area}</h3>
+                                                </div>
                                             </div>
                                         </div>
 

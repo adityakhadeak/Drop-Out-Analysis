@@ -108,7 +108,7 @@ function ThirdStep() {
         </Button>
         {selectedFile && <p className='my-1'>Selected File: {selectedFile.name}</p>}
       </div>
-
+              
       <div className='flex m-1 p-2 items-center justify-between w-[100%]'>
         <button className='btn w-[90px]' onClick={() => { setCurrentStep(2) }}>Back</button>
         <button onClick={handleRegister} className='btn w-[90px]'>Submit</button>
